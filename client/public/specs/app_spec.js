@@ -1,11 +1,11 @@
 var assert = require('assert');
-var app = require('../app.js');
+var Mines = require('../app.js');
 
 describe('app', function () {
   var minesweeper;
 
   beforeEach(function () {
-    minesweeper = new app();
+    minesweeper = new Mines();
   });
 
   it('should be empty at start', function () {

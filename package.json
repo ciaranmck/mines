@@ -1,26 +1,35 @@
 {
-	"name": "minesweeper",
-	"version": "1.0.0",
-	"description": "A web based version of the classic game minesweeper",
-	"main": "server.js",
-	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1",
-		"start": "nodemon server.js",
-		"bundle": "cd client && webpack -w"
-	},
-	"author": "Ciaran McKenna",
-	"dependencies": {
-		"body-parser": "^1.17.2",
-		"express": "^4.15.4",
-		"lodash": "^4.17.4",
-		"mongo": "^0.1.0",
-		"mongodb": "^2.2.31",
-		"nodemon": "^1.11.0",
-		"numeral": "^2.0.6"
-	},
-	"devDependencies": {
-		"mocha": "^4.0.1",
-		"npm-install-webpack-plugin": "^4.0.5",
-		"webpack": "^3.5.3"
-	}
+  "name": "minesweeper",
+  "version": "1.0.0",
+  "description": "A web based version of the classic game minesweeper",
+  "main": "server.js",
+  "scripts": {
+    "test": "mocha specs",
+    "start": "nodemon server.js",
+    "bundle": "cd client && webpack -w"
+  },
+  "author": "Ciaran McKenna",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "express": "^4.15.4",
+    "lodash": "^4.17.4",
+    "mongo": "^0.1.0",
+    "mongodb": "^2.2.31",
+    "nodemon": "^1.11.0",
+    "numeral": "^2.0.6"
+  },
+  "devDependencies": {
+    "mocha": "^4.0.1",
+    "npm-install-webpack-plugin": "^4.0.5",
+    "webpack": "^3.5.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ciaranmck/mines.git"
+  },
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ciaranmck/mines/issues"
+  },
+  "homepage": "https://github.com/ciaranmck/mines#readme"
 }

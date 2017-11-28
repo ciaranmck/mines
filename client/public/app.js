@@ -1,6 +1,5 @@
-var app = function () {
+var App = function () {
   this.volume = 0;
-  this.hydrationValue = 10;
 }
 
-module.exports = app;
+module.exports = App;
