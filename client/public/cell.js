@@ -20,16 +20,19 @@ Cell.prototype.show = function() {
 		} else {
 			fill(200);
 			rect(this.x, this.y, this.w, this.w);
+			if (this.neighbourCount > 0) {
 			textAlign(CENTER);
 			fill(0);
 			text(this.neighbourCount, this.x + this.w * 0.5, this.y + this.w -6);
+			}
 		}
 	}
 }
 
 Cell.prototype.countMines = function() {
 	if (this.mine) {
-		return - 1;
+		this.neighbourCount = -1;
+		return;
 	}
 	var total = 0;
 
@@ -41,7 +44,7 @@ Cell.prototype.countMines = function() {
 			var neighbour = grid[i][j];
 			if (neighbour.mine) {
 				total++;
-			}
+				}
 			}
 		}
 	}
@@ -54,4 +57,24 @@ Cell.prototype.contains = function(x, y) {
 
 Cell.prototype.reveal = function() {
 	this.revealed = true;
+	console.log(this.neighbourCount);
+	if (this.neighbourCount == 0) {
+		// flood fill time
+		this.floodFill();
+	}
+}
+
+Cell.prototype.floodFill = function() {
+	for (var xoff = -1; xoff <= 1; xoff++) {
+		for (var yoff = -1; yoff <= 1; yoff++) {
+			var i = this.i + xoff;
+			var j = this.j + yoff;
+			if(i > -1 && i < cols && j > -1 && j < rows) {
+				var neighbour = grid[i][j];
+				if (!neighbour.mine && !neighbour.revealed) {
+					neighbour.reveal();
+				}
+			}
+		}
+	}
 }
