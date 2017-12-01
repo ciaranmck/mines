@@ -13,7 +13,7 @@ function make2DArray(cols, rows) {
 
  
 function setup() {
-	createCanvas(200, 200);
+	createCanvas(201, 201);
 	cols = floor(width / w);
 	rows = floor(height / w);
 	grid = make2DArray(cols, rows);
@@ -25,7 +25,7 @@ function setup() {
 }
 
 function draw() {
-	background(0);
+	background(255);
 	for (var i = 0; i < cols; i++) {
 		for (var j = 0; j < rows; j++) {
 			grid[i][j].show();
