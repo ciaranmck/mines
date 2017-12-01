@@ -1,13 +1,9 @@
-var Cell = require("./cell.js");
+var grid;
+var cols = 20;
+var rows = 20;
+var w = 20;
 
-var App = function () {
-	var grid;
-	var cols = 20;
-	var rows = 20;
-	var w = 20;
-};
-
-App.prototype.make2DArray = function(cols, rows) {
+function make2DArray(cols, rows) {
 	var arr = new Array(cols);
 	for (var i = 0; i < arr.length; i++) {
 		arr[i] = new Array(rows);
@@ -15,21 +11,20 @@ App.prototype.make2DArray = function(cols, rows) {
 	return arr;
 }
 
-
  
-App.prototype.setup = function() {
+function setup() {
 	createCanvas(200, 200);
 	cols = floor(width / w);
 	rows = floor(height / w);
 	grid = make2DArray(cols, rows);
 	for (var i = 0; i < cols; i++) {
 		for (var j = 0; j < rows; j++) {
-			grid[i][j] = new Cell(i * w, j * w);
+			grid[i][j] = new Cell(i * w, j * w, w);
 		}
 	}
 }
 
-App.prototype.draw = function() {
+function draw() {
 	background(0);
 	for (var i = 0; i < cols; i++) {
 		for (var j = 0; j < rows; j++) {
@@ -37,6 +32,3 @@ App.prototype.draw = function() {
 		}
 	}
 }
-
-
-module.exports = App;
