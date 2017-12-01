@@ -3,6 +3,8 @@ var cols = 20;
 var rows = 20;
 var w = 20;
 
+var totalMines = 10;
+
 function make2DArray(cols, rows) {
 	var arr = new Array(cols);
 	for (var i = 0; i < arr.length; i++) {
@@ -22,6 +24,26 @@ function setup() {
 			grid[i][j] = new Cell(i, j, w);
 		}
 	}
+
+	// Pick totalMines spots
+
+	var options = [];
+	for (var i = 0; i < cols; i++) {
+		for (var j = 0; j < rows; j++) {
+			options.push([i, j]);
+		}
+	}
+
+	for (var n = 0; n < totalMines; n++) {
+		var index =  floor(random(options.length));
+		var choice = options[index];
+		var i = choice[0];
+		var j = choice[1];
+		// Deletes that spot so it's no longer an option
+		options.splice(index, 1);
+		grid[i][j].mine = true;
+	}
+
 	for (var i = 0; i < cols; i++) {
 		for (var j = 0; j < rows; j++) {
 			grid[i][j].countMines();
